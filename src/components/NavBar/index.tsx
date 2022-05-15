@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Icon } from '@/components';
+import { Icon } from 'bw-mobile';
 import './index.scss';
 
 const classPrefix = `bw-nav-bar`;
@@ -21,7 +21,6 @@ const defaultProps = {
 
 const NavBar: FC<NavBarProps> = (p) => {
   const props = Object.assign({ ...defaultProps }, p);
-  console.log(props, 'prop');
   const { back, backArrow, className } = props;
 
   return (
