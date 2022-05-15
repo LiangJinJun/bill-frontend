@@ -1035,12 +1035,13 @@ browserslist@^4.20.2, browserslist@^4.20.3:
     node-releases "^2.0.3"
     picocolors "^1.0.0"
 
-bw-mobile@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.npmmirror.com/bw-mobile/-/bw-mobile-0.0.4.tgz#8ffe094442b8d34a75fb4c75a341271cb2118992"
-  integrity sha512-DQSbOEh+reImx5rPbjvEqe7xAFr/gYh2/mA9UWxR60xlYRBvr2FYgHOc4c7Th9KcN2o9bbgXMRkXEBFG7r33WQ==
+bw-mobile@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npmmirror.com/bw-mobile/-/bw-mobile-0.0.5.tgz#4d6f8ffdf1ceb65d894a5bb08bfa85ffb0a0a0e5"
+  integrity sha512-POlgQI2jrzrWeMDJwwD+itriePJwwaRu6jYq3J9zQOV4gpRrPf53guVciOXlV/IBDyqKEgCYkDfF38DuXHNYqQ==
   dependencies:
     react "^16.12.0 || ^17.0.0"
+    sass "^1.46.0"
 
 c8@^7.11.0:
   version "7.11.2"
