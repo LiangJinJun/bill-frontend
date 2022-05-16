@@ -4,6 +4,6 @@ export const REACT_XIAO_MI = 'http://192.168.31.201:3001';
 export const MCYJ324 = 'http://192.168.0.174:3001';
 export const LOCAL_SERVER = 'http://localhost:3001';
 
-const defaultHost = MCYJ324;
+const defaultHost = JIN_JUN_SERVER;
 
 export { defaultHost };
