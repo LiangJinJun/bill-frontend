@@ -1,13 +1,13 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './keyboard.module.scss';
-import { Icon } from '@/components';
 import { addRecord, cateGoryApi, editRecord } from '@/api';
 import { useNavigate } from 'react-router-dom';
-import CustomRender from '@/pages/Bookkeeping/component';
+import CustomRender from '@/pages/bookkeeping/component';
 import classNames from 'classnames';
 import { Toast } from 'antd-mobile';
+import { Icon } from 'bw-mobile';
 import { getShowTime } from '@/utils/DataTime';
-import { stateType } from '@/pages/Bookkeeping/index';
+import { stateType } from '@/pages/bookkeeping/index';
 import { recordChildren } from '@/pages/Detail/List';
 
 type keyType = {

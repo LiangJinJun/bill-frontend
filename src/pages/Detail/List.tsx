@@ -1,3 +1,5 @@
+import { Icon } from 'bw-mobile';
+import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
 import styles from './list.module.scss';
 import { getRecord } from '@/api';
@@ -172,7 +174,17 @@ const List: FC<timeDateProp> = ({ timeProp, change }) => {
                   onClick={() => recordFn(chunk)}
                 >
                   <div className={styles.left}>
-                    <div className={styles.icon} />
+                    <div
+                      className={classNames(
+                        styles.icon,
+                        'flex justify-center items-center',
+                      )}
+                    >
+                      <Icon
+                        name={chunk.category.icon}
+                        style={{ fontSize: 20 }}
+                      />
+                    </div>
                   </div>
                   <div className={styles.right}>
                     <div className={styles.remark}>{chunk.remark}</div>
@@ -186,7 +198,10 @@ const List: FC<timeDateProp> = ({ timeProp, change }) => {
           ))}
         </>
       ) : (
-        <div className={styles.aotuMain}>暂无数据</div>
+        <div className={styles['not-data']}>
+          <Icon name="not-data" />
+          <span>暂无数据</span>
+        </div>
       )}
     </div>
   );

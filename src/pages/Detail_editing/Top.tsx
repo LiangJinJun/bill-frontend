@@ -1,6 +1,7 @@
+import { Icon, NavBar } from 'bw-mobile';
+import classNames from 'classnames';
 import { FC } from 'react';
 import styles from './top.module.scss';
-import NavBar from '@/components/NavBar';
 import { useNavigate } from 'react-router-dom';
 import { recordChildren } from '@/pages/Detail/List';
 
@@ -23,7 +24,14 @@ const Top: FC<stateType> = ({ state }) => {
       <NavBar backArrow={false} onBack={() => back()} back="返回"></NavBar>
       <div className={styles.top}>
         <div className={styles.main}>
-          <div></div>
+          <div
+            className={classNames(
+              styles.icon,
+              'flex justify-center items-center',
+            )}
+          >
+            <Icon name={state.category.icon} style={{ fontSize: 36 }} />
+          </div>
           <span>{state.category.name}</span>
         </div>
       </div>
