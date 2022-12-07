@@ -24,6 +24,7 @@ export class AudioWeb {
 
   public async play(id: string) {
     const buffer = this.bufferMap.get(id);
+    console.log(buffer, `buffer`);
     if (!buffer || !this.canPlay) return;
     const source = this.audioContext.createBufferSource();
     source.buffer = buffer;

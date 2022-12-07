@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import styles from './keyboard.module.scss';
 import { addRecord, cateGoryApi, editRecord } from '@/api';
 import { useNavigate } from 'react-router-dom';
-import CustomRender from '@/pages/bookkeeping/component';
+import CustomRender from '@/pages/bookkeeping/component/index';
 import classNames from 'classnames';
 import { Toast } from 'antd-mobile';
 import { Icon } from 'bw-mobile';

@@ -30,6 +30,7 @@ const Settings = () => {
   };
 
   const handleSoundSwitch = (val: boolean) => {
+    console.log(val, `val`);
     if (val) {
       if (system.hasAudioCache) {
         audioWeb.loadCache();
