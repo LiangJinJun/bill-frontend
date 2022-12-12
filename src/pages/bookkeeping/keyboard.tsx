@@ -1,6 +1,11 @@
+import {
+  useAddRecordMutation,
+  useUpdateRecordMutation,
+} from '@/service/record';
+import dayjs from 'dayjs';
 import { FC, useEffect, useState } from 'react';
 import styles from './keyboard.module.scss';
-import { addRecord, cateGoryApi, editRecord } from '@/api';
+import { cateGoryApi } from '@/api';
 import { useNavigate } from 'react-router-dom';
 import CustomRender from '@/pages/bookkeeping/component/index';
 import classNames from 'classnames';
@@ -8,7 +13,7 @@ import { Toast } from 'antd-mobile';
 import { Icon } from 'bw-mobile';
 import { getShowTime } from '@/utils/DataTime';
 import { stateType } from '@/pages/bookkeeping/index';
-import { recordChildren } from '@/pages/Detail/List';
+import { recordChildren } from '@/pages/detail/List';
 
 type keyType = {
   keyToggle: number;
@@ -326,6 +331,9 @@ const keyboard: FC<keyType> = ({ type, keyToggle, name, stateList, state }) => {
     changePing(str, 3);
   };
 
+  const [addRecord] = useAddRecordMutation();
+  const [updateRecord] = useUpdateRecordMutation();
+
   //完成
   const changeCompleteFn = async () => {
     setActive1(-1);
@@ -372,10 +380,13 @@ const keyboard: FC<keyType> = ({ type, keyToggle, name, stateList, state }) => {
       } else {
         data.time = stateList[1];
       }
-      const edit = await editRecord(data, Number(stateList[2]));
-      if (edit.statusCode === 200) {
+      const edit = await updateRecord({
+        params: data,
+        id: Number(stateList[2]),
+      });
+      if ('data' in edit && edit.data.statusCode === 200) {
         // Touch('编辑成功')
-        Toast.show({ content: edit.message });
+        Toast.show({ content: edit.data.message });
         const chunk = Object.assign(state, data);
         chunk.status = true;
         navigate(`/editing/${state.id}`, { state: chunk });
@@ -384,9 +395,9 @@ const keyboard: FC<keyType> = ({ type, keyToggle, name, stateList, state }) => {
       //新增
       data.time = time1;
       const res = await addRecord(data);
-      if (res.statusCode === 200) {
+      if ('data' in res && res.data.statusCode === 200) {
         // Touch('创建成功')
-        Toast.show({ content: res.message });
+        Toast.show({ content: res.data.message });
         navigate('/detail');
       }
     }
@@ -426,14 +437,13 @@ const keyboard: FC<keyType> = ({ type, keyToggle, name, stateList, state }) => {
     //选择的时间
     //value 这是子组件返回的渲染的日期
     //time 这是子组件返回的时间戳的参数
-
     setDateTimeValue(time);
-    if (new Date(value).toDateString() == new Date().toDateString()) {
-      setDateValue('今天');
-    } else {
-      setDateValue(value);
-    }
+    setDateValue(value);
   };
+
+  function isToday(value: string) {
+    return new Date(value).toDateString() === new Date().toDateString();
+  }
 
   const changShow = async () => {
     //回显
@@ -461,6 +471,7 @@ const keyboard: FC<keyType> = ({ type, keyToggle, name, stateList, state }) => {
 
   useEffect(() => {
     void changShow();
+    setDateValue(dayjs(new Date()).format('YYYY/MM/DD'));
   }, [stateList]);
 
   return (
@@ -521,8 +532,14 @@ const keyboard: FC<keyType> = ({ type, keyToggle, name, stateList, state }) => {
                     change={() => ChangeDateRender()}
                     changeTime={changeTime}
                   ></CustomRender>
-                  <Icon name={'community-fill'} className="tab-icon" />
-                  <span>{DateValue}</span>
+                  {isToday(DateValue) ? (
+                    <>
+                      <Icon name="today" style={{ fontSize: 21 }} />
+                      <span>今天</span>
+                    </>
+                  ) : (
+                    <span>{DateValue}</span>
+                  )}
                 </div>
                 <div
                   className={classNames([

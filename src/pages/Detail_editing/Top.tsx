@@ -1,9 +1,10 @@
+import { playSound } from '@/modules';
 import { Icon, NavBar } from 'bw-mobile';
 import classNames from 'classnames';
 import { FC } from 'react';
 import styles from './top.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { recordChildren } from '@/pages/Detail/List';
+import { recordChildren } from '@/pages/detail/List';
 
 type stateType = {
   state: recordChildren;
@@ -12,6 +13,7 @@ type stateType = {
 const Top: FC<stateType> = ({ state }) => {
   const navigate = useNavigate();
   const back = () => {
+    playSound.turnPage();
     if (state?.status) {
       navigate('/detail');
     } else {

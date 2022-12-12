@@ -1,9 +1,10 @@
 import { Icon } from 'bw-mobile';
 import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Precision from '@/pages/detail/component';
 import styles from './top.module.scss';
-import Precision from './component';
-import { numType } from '@/pages/Detail/index';
+import { numType } from './index';
 
 type TopProps = {
   change: (val: string) => void;
@@ -11,11 +12,12 @@ type TopProps = {
 };
 
 const Top: FC<TopProps> = ({ change, numExpendIncome }) => {
+  const navigate = useNavigate();
   const tabs = [
     {
       name: '账单',
       iconName: 'bill',
-      click: () => null,
+      click: () => navigate('/bill'),
     },
     {
       name: '资产',
@@ -91,7 +93,7 @@ const Top: FC<TopProps> = ({ change, numExpendIncome }) => {
             <span className={styles.big}>
               {numExpendIncome[1] && numExpendIncome[1].length
                 ? numExpendIncome[1][0]
-                : '00'}
+                : '0'}
             </span>
             <span className={styles.bigNum}>
               {numExpendIncome[1] &&
@@ -110,7 +112,7 @@ const Top: FC<TopProps> = ({ change, numExpendIncome }) => {
             <span className={styles.big}>
               {numExpendIncome[0] && numExpendIncome[0].length
                 ? numExpendIncome[0][0]
-                : '00'}
+                : '0'}
             </span>
             <span className={styles.bigNum}>
               {numExpendIncome[0] &&

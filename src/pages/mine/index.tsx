@@ -1,3 +1,4 @@
+import { playSound } from '@/modules';
 import { spliceNumberByPoint, zeroFill } from '@/utils/time';
 import { FC, useEffect, useState } from 'react';
 import classNames from 'classnames';
@@ -75,6 +76,7 @@ const Mine: FC = () => {
   ];
 
   const goTo = (path?: string) => {
+    playSound.turnPage();
     path && navigate(path);
   };
 
@@ -117,7 +119,10 @@ const Mine: FC = () => {
               账单
               <Icon name="right" style={{ fontSize: 12 }} />
             </div>
-            <div className={classNames(styles.bottom, 'flex grow items-end')}>
+            <div
+              className={classNames(styles.bottom, 'flex grow items-end')}
+              onClick={() => goTo('/bill')}
+            >
               <div className={classNames(styles.big, 'flex-shrink-0 relative')}>
                 {zeroFill(billRecord?.month)}
                 <span>月</span>
