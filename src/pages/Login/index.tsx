@@ -48,6 +48,8 @@ const Login: FC = () => {
       dispatch(setToken(data.token));
       dispatch(setUserInfo(data.userInfo));
       setTimeout(() => navigate(-1), 1000);
+    } else if (statusCode === 400) {
+      await getCaptcha();
     }
   };
 
