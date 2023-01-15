@@ -42,6 +42,7 @@ const Top: FC<TopProps> = ({ change, numExpendIncome }) => {
   };
 
   const ChangeTimeDate = async (time: string, arr: Array<string>) => {
+    console.log(time, 'time1222');
     sessionStorage.setItem('setYearMoth', JSON.stringify(arr));
     sessionStorage.setItem('timeDate', JSON.stringify(time));
     setYearMoth(arr);

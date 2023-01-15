@@ -1,7 +1,14 @@
-import { FC } from 'react';
+import React from 'react';
+import Top from './top';
+import ChartLine from '@/pages/Chart/chartLine';
 
-const Chart: FC = () => {
-  return <div>111</div>;
+const DemoLine: React.FC = () => {
+  return (
+    <>
+      <Top></Top>
+      <ChartLine></ChartLine>
+    </>
+  );
 };
 
-export default Chart;
+export default DemoLine;

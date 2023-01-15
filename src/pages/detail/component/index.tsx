@@ -25,6 +25,7 @@ const Precision: FC<CustomRender> = ({ visible1, change, changeTime }) => {
             max={now}
             precision="month"
             onConfirm={(val) => {
+              console.log(val, 'liangjinjun');
               const time = new Date(val);
               const time2 = getTimedate(time);
               const Y = val.getFullYear() + '年';

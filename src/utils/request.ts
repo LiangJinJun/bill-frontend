@@ -32,6 +32,7 @@ request.interceptors.response.use(
     return response.data;
   },
   ({ message, response, config }) => {
+    console.log(message, 'message');
     if (message.includes('timeout')) {
       Toast.show({ content: '请求超时', icon: 'fail', duration: 1000 });
       console.error('请求超时');

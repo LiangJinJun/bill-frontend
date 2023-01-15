@@ -48,6 +48,7 @@ const List: FC<timeDateProp> = ({ timeProp, change }) => {
   const time = new Date();
   const time2 = getTimedate(time);
   const { data } = useRecordQuery({ startDate: timeProp || time2 });
+  console.log(data, 'liang');
 
   const Recording = async () => {
     if (!data) return;

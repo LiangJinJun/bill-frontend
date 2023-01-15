@@ -1,0 +1,49 @@
+.topContent {
+  background: #aeeeff;
+  padding: 10px;
+  .top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .admDropdown {
+      background: #aeeeff;
+      :global {
+        .adm-dropdown-nav {
+          border-bottom: 0px;
+        }
+      }
+    }
+    .admDropdownItemActive {
+      color: #000000;
+    }
+  }
+  .dateDay {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border: 1px solid #000000;
+    .itemList {
+      width: 33.3%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 0 5px;
+      &:not(:last-child) {
+        border-right: 1px solid #000000;
+      }
+      &.active {
+        background: #000000;
+        color: #aeeeff;
+      }
+    }
+  }
+}
+body {
+  :global {
+    .adm-popup.adm-dropdown-popup {
+      top: 95.948px!important;
+    }
+  }
+}

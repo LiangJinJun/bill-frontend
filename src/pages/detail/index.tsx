@@ -10,6 +10,7 @@ const Detail: FC = () => {
   const [numExpendIncome, setNumExpendIncome] = useState<numType | []>([]);
 
   const timeDate = (val: string) => {
+    console.log(val, '时间');
     setTime2(val);
   };
 
