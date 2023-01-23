@@ -43,7 +43,43 @@
 body {
   :global {
     .adm-popup.adm-dropdown-popup {
-      top: 95.948px!important;
+      top: 95.948px !important;
+    }
+  }
+}
+
+.downContent {
+  padding: 0 0 0 12px;
+  .itemSelected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > div:last-child {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      justify-content: space-between;
+      padding: 10px 0;
+      height: 42px;
+    }
+    &:first-child{
+      >div:last-child{
+        border-bottom: 1px solid #cccccc;
+      }
+    }
+    .name {
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .tab-icon {
+      display: block;
+      font-size: 28px;
+    }
+    .tab-icon-duigo{
+      display: block;
+      font-size: 22px;
+      margin-right: 12px;
     }
   }
 }
